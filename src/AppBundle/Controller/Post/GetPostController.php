@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class GetPostController extends Controller
 {
     /**
-     * @Route("/post/1", methods={"GET"}, name="post")
+     * @Route("/post/{id}", methods={"GET"}, name="post")
      */
     public function getPostAction()
     {
-        return $this->render("post/post.html.twig", array());
+        return $this->render("AppBundle:post:post.html.twig", array());
     }
 }
