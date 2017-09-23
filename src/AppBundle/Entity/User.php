@@ -18,15 +18,6 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * @ORM\Column(
-     *     type="string",
-     *     nullable="true",
-     *     length="60"
-     * )
-     */
-    protected $firstName;
-
     public function getId()
     {
         return $this->id;

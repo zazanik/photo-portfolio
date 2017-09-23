@@ -2,29 +2,45 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('dist/styles/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('dist/styles/main.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block header %}
             <header class="header">
-                <img class="logo-icon" src="{{ asset('images/aquanote-logo.png') }}">
-                <ul class="navi">
-                    <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
-                    {% endif %}
-                </ul>
+                <div class="container">
+                    <div class="logo">
+                        <a href="{{ path('homepage') }}">
+                            <img src="http://www.ovidiuoltean.com/img/logo.png" alt="Ovidiu Oltean">
+                        </a>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="http://www.ovidiuoltean.com">Home</a></li>
+                            <li><a href="http://www.ovidiuoltean.com/gallery/portfolio/">Portfolio</a></li>
+                            <li><a href="http://www.ovidiuoltean.com/page/contact/">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
-        {% endblock %}
-        {% block body %}{% endblock %}
+        {% endblock header %}
+        {% block main %}{% endblock %}
+        {% block footer %}
+            <div class="footer">
+                <div class="container">
+                    Copyright © 2012 - 2017 <a href="http://www.ovidiuoltean.com">Ovidiu Oltean</a>. All rights reserved.<br><br>
+                    <ul>
+                        <li><a href="https://www.facebook.com/OlteanOvidiuRetouch"><img src="http://www.ovidiuoltean.com/img/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="http://instagram.com/ovidiu_oltean"><img src="http://www.ovidiuoltean.com/img/instagram.png" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        {% endblock footer %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
