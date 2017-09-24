@@ -3,7 +3,7 @@
 namespace AppBundle\Service\Post;
 
 use AppBundle\Repository\PostRepository;
-use AppBundle\Service\Response\PostsResponse;
+use AppBundle\Service\PaginateResponse\PostsResponse;
 
 /**
  * Class GetPostsService

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Post;
+namespace AppBundle\Controller\Admin\Post;
 
 use AppBundle\Entity\Post;
 use AppBundle\Service\Post\GetPostsService;
@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GetPostsController extends Controller
+class GetAdminPostsController extends Controller
 {
     /**
      * @var GetPostsService
@@ -26,23 +26,12 @@ class GetPostsController extends Controller
     }
 
     /**
-     * @Route("/")
-     */
-    public function redirectToPortfolio()
-    {
-        return $this->redirectToRoute('homepage');
-    }
-
-    /**
      * @Route(
-     *     "/portfolio/{page}",
+     *     "/admin/posts/{page}",
      *     defaults={"page" = 1},
-     *     requirements={"id" = "\d+"},
      *     methods={"GET"},
-     *     name="homepage"
+     *     name="admin_posts"
      * )
-     * @param Request $request
-     * @return mixed
      */
     public function getPostsAction(Request $request)
     {
@@ -51,7 +40,9 @@ class GetPostsController extends Controller
 
         $posts = $this->getPostsService->getPosts($page, $limit);
 
-        return $this->render("AppBundle:post:posts.html.twig", array(
+        dump($posts);
+
+        return $this->render("AppBundle:admin/post:posts.html.twig", array(
             'posts' => $posts
         ));
     }

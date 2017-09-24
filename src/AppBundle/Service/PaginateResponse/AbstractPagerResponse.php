@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service\Paginate;
+namespace AppBundle\Service\PaginateResponse;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;

@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Service\Response;
+namespace AppBundle\Service\PaginateResponse;
 
-use AppBundle\Service\Paginate\AbstractPagerResponse;
+use AppBundle\Service\PaginateResponse\AbstractPagerResponse;
 use Doctrine\ORM\QueryBuilder;
 
 class PostsResponse extends AbstractPagerResponse
@@ -15,7 +15,7 @@ class PostsResponse extends AbstractPagerResponse
     /**
      * @var int
      */
-    const DEFAULT_COUNT_ROWS = 10;
+    const DEFAULT_COUNT_ROWS = 12;
 
     /**
      * @param QueryBuilder $builder

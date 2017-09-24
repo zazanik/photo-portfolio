@@ -1,73 +1,52 @@
 {% block pagination %}
-
-<!-- Start Pagination -->
-<div class="spacing-20"></div>
-
 {% if posts.meta.maxPage > 1 %}
-    <ul class="pagination">
-
-        {% if posts.meta.maxPage > 4 %}
-
-            {# Link to first page #}
-            <li {{ posts.meta.maxPage == 1 ? 'class="disabled"' }}>
-                <a href="{{ path(app.request.attributes.get('_route'), { page: 1 }) }}">«</a>
-            </li>
-            {# /Link to first page #}
-
-            {% if app.request.attributes.get('page') <= 3 %}
-
-                {% for i in 1..5 %}
-                    <li {{ app.request.attributes.get('page') == i ? 'class="current"' }}>
-                        <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-                <li><a>...</a></li>
-
-            {% endif %}
-
-            {% if app.request.attributes.get('page') >= 4 and app.request.attributes.get('page') <= posts.meta.maxPage-3 %}
-                <li><a>...</a></li>
-                {% for i in app.request.attributes.get('page')-2..app.request.attributes.get('page')+2 %}
-                    <li {{ app.request.attributes.get('page') == i ? 'class="current"' }}>
-                        <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-                <li><a>...</a></li>
-            {% endif %}
-
-            {% if app.request.attributes.get('page') > posts.meta.maxPage-3 and app.request.attributes.get('page') > 3 %}
-
-                <li><a>...</a></li>
-                {% for i in posts.meta.maxPage-4..posts.meta.maxPage %}
-                    <li {{ app.request.attributes.get('page') == i ? 'class="current"' }}>
-                        <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-
-            {% endif %}
-
-            {# Link to last page #}
-            <li {{ app.request.attributes.get('page') == posts.meta.maxPage ? 'class="disabled"' }}>
-                <a href="{{ path(app.request.attributes.get('_route'), { page: posts.meta.maxPage }) }}">»</a>
-            </li>
-            {# /Link to last page #}
-
-        {% endif %}
-
-        {% if posts.meta.maxPage < 5 %}
-
-            {% for i in 1..posts.meta.maxPage %}
-
-                <li {{ app.request.attributes.get('page') == i ? 'class="current"' }}>
-                    <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+    <div class="text-center">
+        <ul class="pagination">
+            {% if posts.meta.maxPage > 4 %}
+                {# Link to first page #}
+                <li {{ posts.meta.maxPage == 1 ? 'class="disabled"' }}>
+                    <a href="{{ path(app.request.attributes.get('_route'), { page: 1 }) }}">«</a>
                 </li>
-
-            {% endfor %}
-
-        {% endif %}
-
-    </ul>
+                {# /Link to first page #}
+                {% if app.request.attributes.get('page') <= 3 %}
+                    {% for i in 1..5 %}
+                        <li {{ app.request.attributes.get('page') == i ? 'class="active"' }}>
+                            <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+                        </li>
+                    {% endfor %}
+                    <li><a>...</a></li>
+                {% endif %}
+                {% if app.request.attributes.get('page') >= 4 and app.request.attributes.get('page') <= posts.meta.maxPage-3 %}
+                    <li><a>...</a></li>
+                    {% for i in app.request.attributes.get('page')-2..app.request.attributes.get('page')+2 %}
+                        <li {{ app.request.attributes.get('page') == i ? 'class="active"' }}>
+                            <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+                        </li>
+                    {% endfor %}
+                    <li><a>...</a></li>
+                {% endif %}
+                {% if app.request.attributes.get('page') > posts.meta.maxPage-3 and app.request.attributes.get('page') > 3 %}
+                    <li><a>...</a></li>
+                    {% for i in posts.meta.maxPage-4..posts.meta.maxPage %}
+                        <li {{ app.request.attributes.get('page') == i ? 'class="active"' }}>
+                            <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                {# Link to last page #}
+                <li {{ app.request.attributes.get('page') == posts.meta.maxPage ? 'class="disabled"' }}>
+                    <a href="{{ path(app.request.attributes.get('_route'), { page: posts.meta.maxPage }) }}">»</a>
+                </li>
+                {# /Link to last page #}
+            {% endif %}
+            {% if posts.meta.maxPage < 5 %}
+                {% for i in 1..posts.meta.maxPage %}
+                    <li {{ app.request.attributes.get('page') == i ? 'class="active"' }}>
+                        <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
 {% endif %}
-
-<!-- End Pagination -->
 {% endblock pagination %}
