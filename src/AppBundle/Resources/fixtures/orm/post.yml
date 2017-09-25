@@ -2,19 +2,19 @@ AppBundle\Entity\Post:
     post_1:
         title:      'ELLE MEXICO * NATHALIA OLIVEIRA'
         content:    <text(100)>
-        thumb:      '/uploads/fixture<numberBetween(1,6)>.jpg'
+        thumb:      'fixture<numberBetween(1,6)>.jpg'
 
     post_2:
         title:      "HARPER'S BAZAAR KZ * JASMINE SANDERS"
         content:    <text(100)>
-        thumb:      '/uploads/fixture<numberBetween(1,6)>.jpg'
+        thumb:      'fixture<numberBetween(1,6)>.jpg'
 
     post_3:
         title:      'LUI MAGAZINE'
         content:    <text(100)>
-        thumb:      '/uploads/fixture<numberBetween(1,6)>.jpg'
+        thumb:      'fixture<numberBetween(1,6)>.jpg'
 
     post_{4..1500}:
         title:      <text(20,100)>
         content:    <text(100)>
-        thumb:      '/uploads/fixture<numberBetween(1,6)>.jpg'
+        thumb:      'fixture<numberBetween(1,6)>.jpg'

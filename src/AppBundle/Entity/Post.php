@@ -2,7 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use \DateTime;
 
 /**
@@ -11,6 +14,8 @@ use \DateTime;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -45,6 +50,13 @@ class Post
     private $thumb;
 
     /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="thumb")
+     *
+     * @var File
+     */
+    private $thumbFile;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -55,7 +67,7 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="post")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="post")
      */
     private $image;
 
@@ -141,6 +153,20 @@ class Post
         return $this->thumb;
     }
 
+    public function setThumbFile(File $thumb = null)
+    {
+        $this->thumbFile = $thumb;
+
+        if ($thumb) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getThumbFile()
+    {
+        return $this->thumbFile;
+    }
+
     /**
      * Set createdAt.
      *
@@ -188,5 +214,25 @@ class Post
     {
         return $this->updatedAt;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage(Image $image)
+    {
+        $this->image = $image;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+}

@@ -51,6 +51,8 @@ class GetPostsController extends Controller
 
         $posts = $this->getPostsService->getPosts($page, $limit);
 
+        dump($posts);
+
         return $this->render("AppBundle:post:posts.html.twig", array(
             'posts' => $posts
         ));
