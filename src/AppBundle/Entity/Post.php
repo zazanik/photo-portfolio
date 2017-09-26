@@ -14,8 +14,6 @@ use \DateTime;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  * @ORM\HasLifecycleCallbacks()
- *
- * @Vich\Uploadable
  */
 class Post
 {
@@ -50,8 +48,6 @@ class Post
     private $thumb;
 
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="thumb")
-     *
      * @var File
      */
     private $thumbFile;

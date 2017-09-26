@@ -37,3 +37,10 @@ services:
     AppBundle\Repository\PostRepository:
         factory: 'doctrine.orm.entity_manager:getRepository'
         arguments: ['AppBundle\Entity\Post']
+
+    app.event_listener.post_entity_subscriber:
+        class: AppBundle\EventListener\Post\PostEntitySubscriber
+        tags:
+          - { name: doctrine.event_subscriber }
+        arguments:
+          - '%app.path.product_images%'
