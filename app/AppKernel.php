@@ -18,8 +18,14 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
-//            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
-//            new Vich\UploaderBundle\VichUploaderBundle(),
+            // These are the other bundles the SonataAdminBundle relies on
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            // And finally, the storage and SonataAdminBundle
+            new Sonata\AdminBundle\SonataAdminBundle(),
 
             new AppBundle\AppBundle(),
         ];

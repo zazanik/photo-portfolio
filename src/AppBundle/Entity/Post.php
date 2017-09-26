@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use \DateTime;
 
 /**
@@ -66,6 +65,18 @@ class Post
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="post")
      */
     private $image;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="draft", type="boolean")
+     */
+    private $draft = false;
+
+//    function __construct()
+//    {
+//        $this->image = new ArrayCollection();
+//    }
 
     /**
      * Get id
@@ -221,14 +232,33 @@ class Post
 
     /**
      * @param mixed $image
+     * @return Post
      */
     public function setImage(Image $image)
     {
-        $this->image = $image;
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getDraft(): bool
+    {
+        return $this->draft;
+    }
+
+    /**
+     * @param bool $draft
+     */
+    public function setDraft(bool $draft)
+    {
+        $this->draft = $draft;
     }
 
     public function __toString()
     {
-        return $this->title;
+        return $this->getTitle() ?: '';
     }
 }
