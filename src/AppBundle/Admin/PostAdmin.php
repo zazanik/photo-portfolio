@@ -26,7 +26,7 @@ class PostAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('title')
-            ->add('thumb')
+            ->add('thumb', 'file')
         ;
     }
 }
