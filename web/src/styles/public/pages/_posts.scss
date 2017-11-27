@@ -18,6 +18,7 @@
 }
 
 .gallery_thumb {
+  padding: 0;
   border: 1px solid #e8e8e8;
   margin: 0 0 35px;
   background-color: #ffffff;
@@ -55,6 +56,11 @@
   color: #cccccc;
   font-size: 30px;
   margin-bottom: 15px;
+}
+
+.resent-title {
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 .content_txt {

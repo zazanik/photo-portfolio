@@ -10,3 +10,5 @@ parameters:
     locale: en
     app.path.product_images: /uploads/images/posts
     app.path.images: /uploads/images
+    app.page_per_page: 21
+    app.admin.page_per_page: 40
